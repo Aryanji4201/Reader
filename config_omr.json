@@ -1,0 +1,110 @@
+{
+    "system": {
+        "name": "OMR Evaluation & Scoring System",
+        "version": "1.0.0",
+        "description": "Automated OMR evaluation for Innomatics Research Labs",
+        "target_accuracy": 99.5,
+        "max_error_rate": 0.5,
+        "author": "Code4Edtech Challenge Participant"
+    },
+    "processing_parameters": {
+        "bubble_detection": {
+            "min_area": 15,
+            "max_area": 800,
+            "aspect_ratio_tolerance": 0.4,
+            "circularity_threshold": 0.5
+        },
+        "confidence_scoring": {
+            "threshold": 0.65,
+            "min_fill_ratio": 0.3,
+            "quality_check_enabled": true
+        },
+        "image_preprocessing": {
+            "gaussian_blur_kernel": [5, 5],
+            "clahe_clip_limit": 3.0,
+            "clahe_tile_grid": [8, 8],
+            "bilateral_filter": {
+                "d": 9,
+                "sigma_color": 75,
+                "sigma_space": 75
+            }
+        },
+        "perspective_correction": {
+            "enabled": true,
+            "contour_approximation_epsilon": 0.02,
+            "min_document_area": 50000
+        }
+    },
+    "exam_structure": {
+        "total_questions": 100,
+        "questions_per_subject": 20,
+        "options_per_question": 5,
+        "subjects": [
+            "Data Analytics",
+            "Machine Learning", 
+            "Python Programming",
+            "Statistics",
+            "Deep Learning"
+        ],
+        "subject_question_ranges": {
+            "Data Analytics": [1, 20],
+            "Machine Learning": [21, 40],
+            "Python Programming": [41, 60],
+            "Statistics": [61, 80],
+            "Deep Learning": [81, 100]
+        },
+        "supported_versions": ["Version_A", "Version_B", "Version_C", "Version_D"]
+    },
+    "performance_targets": {
+        "processing_speed": {
+            "max_time_per_sheet": 10.0,
+            "target_time_per_sheet": 3.0,
+            "batch_processing_enabled": true
+        },
+        "throughput": {
+            "sheets_per_hour": 1000,
+            "daily_capacity": 3000,
+            "concurrent_processing": false
+        },
+        "quality_metrics": {
+            "accuracy_target": 99.5,
+            "error_rate_limit": 0.5,
+            "confidence_threshold": 0.65,
+            "manual_review_threshold": 0.5
+        }
+    },
+    "database": {
+        "filename": "omr_results.db",
+        "backup_enabled": true,
+        "backup_interval_hours": 24,
+        "audit_trail_enabled": true,
+        "data_retention_days": 365
+    },
+    "ui_settings": {
+        "theme": "professional",
+        "color_scheme": {
+            "primary": "#667eea",
+            "secondary": "#764ba2",
+            "success": "#4ECDC4",
+            "warning": "#FFE66D",
+            "error": "#FF6B6B"
+        },
+        "layout": {
+            "sidebar_expanded": true,
+            "wide_mode": true,
+            "show_progress_bars": true
+        }
+    },
+    "export_options": {
+        "supported_formats": ["CSV", "Excel", "JSON"],
+        "include_metadata": true,
+        "include_confidence_scores": true,
+        "include_processing_flags": true
+    },
+    "security": {
+        "local_processing_only": true,
+        "no_cloud_dependencies": true,
+        "secure_file_handling": true,
+        "audit_logging": true
+    }
+}
